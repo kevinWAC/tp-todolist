@@ -1,3 +1,9 @@
+<div class="row">
+  <div class="text-center">
+    <h2>Liste des utilisateurs</h2>
+  </div>
+</div>
+
 <table class="table table-dark table-striped text-center">
   <thead>
     <tr>
@@ -7,15 +13,38 @@
     </tr>
   </thead>
   <tbody>
+
     <tr *ngFor="let user of users">
-      <td scope="row">{{user.name}}</td>
-      <td>{{user.email}}</td>
+      <td *ngIf="updateUser == user.id ; else displayName" scope="row" >
+          <input type="text" name="name" [(ngModel)]="user.name" required minlength="2" />
+      </td>
+
+      <ng-template #displayName>
+        <td>
+          <a [routerLink]="['../tasks',user.id]">{{user.name}}</a>
+        </td>
+      </ng-template>
+
+      <td *ngIf="updateUser == user.id; else displayEmail" scope="row">
+        <input type="email" name="email" [(ngModel)]="user.email" />
+      </td>
+      <ng-template #displayEmail>
+        <td>{{user.email}}</td>
+      </ng-template>
+
       <td>
-        <mat-icon>edit</mat-icon>
-        <mat-icon>clear</mat-icon>
-        <mat-icon>star</mat-icon>
+        <button (click)="update(user.id)" mat-icon-button ><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button color="warn" (click)="delete(user.id)"><mat-icon>clear</mat-icon></button>
+        <button *ngIf="updateUser == user.id;" mat-icon-button (click)="validate(user)"><mat-icon>done</mat-icon></button>
       </td>
     </tr>
+
   </tbody>
 </table>
+
+<app-add-user></app-add-user>
+
+
+
+
 

@@ -1,0 +1,7 @@
+<form #formAddUser="ngForm">
+<label>Nom</label>
+<input type="text" name="name" [(ngModel)]="newUser.name" required minlength="2"/>
+<label>Email</label>
+<input type="email" name="email" [(ngModel)]="newUser.email" required>
+<button (click)="onSubmit(formAddUser)" [disabled]="formAddUser.invalid">Enregistrer</button>
+</form>

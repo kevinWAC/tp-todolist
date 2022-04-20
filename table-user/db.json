@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "kevin ulreich",
+      "email": "ulreich_kevin@hotmail.com"
+    },
+    {
+      "id": 2,
+      "name": "Ervin Howell",
+      "email": "Shanna@melissa.tv"
+    },
+    {
+      "id": 3,
+      "name": "Clémentine Bauch",
+      "email": "Nathan@yesenia.net"
+    },
+    {
+      "id": 4,
+      "name": "Patricia Lebsack",
+      "email": "Julianne.OConner@kory.org"
+    },
+    {
+      "id": 5,
+      "name": "Chelsey Dietrich",
+      "email": "Lucio_Hettinger@annie.ca"
+    },
+    {
+      "id": 6,
+      "name": "Mrs. Dennis Schulist",
+      "email": "Karley_Dach@jasper.info"
+    },
+    {
+      "id": 7,
+      "name": "Kurtis Weissnat",
+      "email": "Telly.Hoeger@billy.biz"
+    },
+    {
+      "id": 8,
+      "name": "Nicholas Runolfsdottir Vk",
+      "email": "Sherwood@rosamond.me"
+    }
+  ],
+  "todos": [
+    {
+      "id": 1,
+      "idUser": 1,
+      "task": "Faire autre chose",
+      "done": true
+    },
+    {
+      "id": 2,
+      "idUser": 1,
+      "task": "Faire une chose",
+      "done": false
+    },
+    {
+      "id": 3,
+      "idUser": 2,
+      "task": "Faire autre chose",
+      "done": true
+    },
+    {
+      "id": 4,
+      "idUser": 2,
+      "task": "Faire une chose",
+      "done": false
+    }
+  ]
+}
