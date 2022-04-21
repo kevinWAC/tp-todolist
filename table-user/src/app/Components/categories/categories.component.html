@@ -1,11 +1,11 @@
-    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" >
-      <div>
-        <label>Nouvelle categorie</label>
-        <input type="text" class="form-control" name="category" formControlName="category"/>
-      </div>
-      <div class="form-group ">
-        <input type="color" class="form-control mb-2" formControlName="color"/>
-      </div>
-      <button type="submit" [disabled]="categoryForm.invalid">Submit</button>
-    </form>
+<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" >
+  <div>
+    <label>Nouvelle categorie</label>
+    <input type="text" class="form-control" name="category" formControlName="category"/>
+  </div>
+  <div class="form-group ">
+    <input type="color" class="form-control mb-2" formControlName="color"/>
+  </div>
+  <button type="submit" class="btn btn-success" [disabled]="categoryForm.invalid">Créer</button>
+</form>
 

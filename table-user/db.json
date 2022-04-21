@@ -1,16 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "kevin ulreich",
-      "email": "ulreich_kevin@hotmail.com"
-    },
-    {
-      "id": 2,
-      "name": "Ervin Howell",
-      "email": "Shanna@melissa.tv"
-    },
-    {
       "id": 3,
       "name": "Clémentine Bauch",
       "email": "Nathan@yesenia.net"
@@ -39,32 +29,151 @@
       "id": 8,
       "name": "Nicholas Runolfsdottir Vk",
       "email": "Sherwood@rosamond.me"
+    },
+    {
+      "name": "toto",
+      "email": "tata@tata.com",
+      "id": 9
     }
   ],
   "todos": [
     {
-      "id": 1,
       "idUser": 1,
-      "task": "Faire autre chose",
-      "done": true
+      "task": "commencer",
+      "done": true,
+      "category": {
+        "category": "travail",
+        "color": "#cb9a9a",
+        "id": 1
+      },
+      "id": 1
     },
     {
-      "id": 2,
       "idUser": 1,
-      "task": "Faire une chose",
-      "done": false
+      "task": "ménage",
+      "done": false,
+      "category": {
+        "category": "maison",
+        "color": "#37d77c",
+        "id": 2
+      },
+      "id": 2
     },
     {
-      "id": 3,
-      "idUser": 2,
-      "task": "Faire autre chose",
-      "done": true
+      "idUser": 1,
+      "task": "dfgfdsvf",
+      "done": false,
+      "category": {
+        "category": "travail",
+        "color": "#cb9a9a",
+        "id": 1
+      },
+      "id": 3
     },
     {
-      "id": 4,
+      "idUser": 1,
+      "task": "scdvsdc",
+      "done": false,
+      "category": {
+        "category": "travail",
+        "color": "#cb9a9a",
+        "id": 1
+      },
+      "id": 4
+    },
+    {
       "idUser": 2,
-      "task": "Faire une chose",
-      "done": false
+      "task": "cxvbnvcb",
+      "done": false,
+      "category": {
+        "category": "travail",
+        "color": "#cb9a9a",
+        "id": 1
+      },
+      "id": 5
+    },
+    {
+      "idUser": 3,
+      "task": "d",
+      "done": false,
+      "category": {
+        "category": "travail",
+        "color": "#cb9a9a",
+        "id": 1
+      },
+      "id": 6
+    },
+    {
+      "idUser": 3,
+      "task": "ssss",
+      "done": true,
+      "category": {
+        "category": "maison",
+        "color": "#37d77c",
+        "id": 2
+      },
+      "id": 7
+    },
+    {
+      "idUser": 3,
+      "task": "ssss",
+      "done": true,
+      "category": {
+        "category": "travail",
+        "color": "#cb9a9a",
+        "id": 1
+      },
+      "id": 8
+    },
+    {
+      "idUser": 9,
+      "task": "dddddd",
+      "done": true,
+      "category": {
+        "category": "travail",
+        "color": "#cb9a9a",
+        "id": 1
+      },
+      "id": 9
+    },
+    {
+      "idUser": 9,
+      "task": "ddrrrrr",
+      "done": false,
+      "category": {
+        "category": "maison",
+        "color": "#37d77c",
+        "id": 2
+      },
+      "id": 10
+    },
+    {
+      "idUser": 9,
+      "task": "wqsdffg",
+      "done": false,
+      "category": {
+        "category": "bêtises",
+        "color": "black",
+        "id": 3
+      },
+      "id": 11
+    }
+  ],
+  "categories": [
+    {
+      "category": "travail",
+      "color": "#cb9a9a",
+      "id": 1
+    },
+    {
+      "category": "maison",
+      "color": "#37d77c",
+      "id": 2
+    },
+    {
+      "category": "bêtises",
+      "color": "black",
+      "id": 3
     }
   ]
 }

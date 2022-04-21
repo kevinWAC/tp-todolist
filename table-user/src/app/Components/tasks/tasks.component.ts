@@ -1,6 +1,6 @@
 import { Category } from './../../Models/models';
 import { CategoriesService } from './../../Services/categories.service';
-import { FormBuilder, FormGroup, NgForm, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Tasks } from 'src/app/Models/models';
@@ -123,11 +123,16 @@ export class TasksComponent implements OnInit {
 
   filter() {
     const filter = this.filterForm.value.filter
+    if (filter === null) return;
     this.tasksService.filterTask(filter, this.idUser).subscribe({
       next: (task:any) => {
        this.tasks = task
       }
     })
+  }
+
+  deleteFilter() {
+    location.reload();
   }
 
 }

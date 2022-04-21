@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { TasksComponent } from './Components/tasks/tasks.component';
 import { UserComponent } from './Components/user/user.component';
-import { FormulaireComponent } from './formulaire/formulaire.component';
 import { AddUserComponent } from './Components/add-user/add-user.component';
 import { CategoriesComponent } from './Components/categories/categories.component';
 
@@ -18,7 +17,6 @@ import { CategoriesComponent } from './Components/categories/categories.componen
     AppComponent,
     UserComponent,
     TasksComponent,
-    FormulaireComponent,
     AddUserComponent,
     CategoriesComponent,
   ],

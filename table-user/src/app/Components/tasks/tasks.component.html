@@ -61,7 +61,7 @@
             </option>
         </select>
       </div>
-      <button type="submit" [disabled]="taskForm.invalid">Submit</button>
+      <button type="submit" class="btn btn-success" [disabled]="taskForm.invalid">Ajouter</button>
     </form>
 
     <app-categories class="form-group col-md-5"></app-categories>
@@ -72,8 +72,11 @@
       <select class="form-control" formControlName="filter">
         <option *ngFor="let cat of categories" [ngValue]="cat.id" [style.background-color]="cat.color">{{cat.category}}</option>
       </select>
-      <button type="submit">Filtre</button>
+      <button class="btn btn-primary mt-1" type="submit">Filtre</button>
     </form>
   </div>
 </div>
+
+<button class="btn btn-outline-warning mt-1" (click)="deleteFilter()">Supprimer filtre</button>
+
 
