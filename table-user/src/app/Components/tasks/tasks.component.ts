@@ -1,4 +1,6 @@
-import { NgForm } from '@angular/forms';
+import { Category } from './../../Models/models';
+import { CategoriesService } from './../../Services/categories.service';
+import { FormBuilder, FormGroup, NgForm, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Tasks } from 'src/app/Models/models';
@@ -15,14 +17,42 @@ export class TasksComponent implements OnInit {
   setTaskId!: number;
   newTask!: string;
   idUser!: number;
+  nameCat!: string;
+  categories!: Category[];
 
-  constructor(private route: ActivatedRoute, private tasksService: TasksService) { }
+  taskForm = new FormGroup({
+    category: new FormControl('', [Validators.required,]),
+    task: new FormControl('', [Validators.required,Validators.minLength(1)])
+  })
+
+  filterForm = new FormGroup({
+    filter: new FormControl()
+  })
+
+  constructor(private route: ActivatedRoute, private tasksService: TasksService, private categoriesService: CategoriesService, private fb:FormBuilder) { }
 
   ngOnInit(): void {
-   this.idUser = this.route.snapshot.params['id']
+    this.getTasks();
+    this.getCategories();
+
+  }
+
+  getTasks() {
+    this.idUser = parseFloat(this.route.snapshot.params['id'])
     this.tasksService.getTasksUser(this.idUser).subscribe({
       next:(tasks: Tasks) => {
           this.tasks = tasks
+      },
+      error(err: any): void {
+        console.error("Erreur !!!!")
+      },
+    })
+  }
+
+  getCategories() {
+    this.categoriesService.getCategories().subscribe({
+      next:(cat: Category[]) => {
+          this.categories = cat
       },
       error(err: any): void {
         console.error("Erreur !!!!")
@@ -67,17 +97,35 @@ export class TasksComponent implements OnInit {
     })
   }
 
-  onSubmit(formAddTask: NgForm) {
-    const newTask = {
-     idUser: this.idUser,
-     task: this.newTask,
-     done: false
-    }
-    this.tasksService.createTask(newTask)
-    .subscribe({
-      next: () => {
-        formAddTask.reset();
-        location.reload();
+  onSubmit() {
+    const idCat = this.taskForm.value.category
+    const Task = this.taskForm.value.task
+    this.categoriesService.getCategoriesId(idCat).subscribe({
+      next:(cat: Category) => {
+        console.log(cat)
+        const newTask = {
+          idUser: this.idUser,
+          task: Task,
+          done: false,
+          category:cat
+         }
+         this.tasksService.createTask(newTask).subscribe({
+           next: () => {
+             location.reload();
+           }
+         })
+      },
+      error(err: any): void {
+        console.error("Erreur !!!!")
+      },
+    })
+  }
+
+  filter() {
+    const filter = this.filterForm.value.filter
+    this.tasksService.filterTask(filter, this.idUser).subscribe({
+      next: (task:any) => {
+       this.tasks = task
       }
     })
   }

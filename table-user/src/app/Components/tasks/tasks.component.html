@@ -2,25 +2,27 @@
   <div class="container col-md-12 mt-5">
     <a [routerLink]="['']">Retour</a>
   </div>
-  <div class="row text-center d-flex">
-    <div class="col-md-6 ">
+  <div class="row text-center">
+    <div class="col-md-6">
       <b>Todo</b>
       <ul class="mt-4">
         <ng-container *ngFor="let todo of tasks">
-          <li *ngIf="!todo.done && setTaskId !== todo.id else setTaskTemplate ">
-            {{todo.task}}
-            <button (click)="status(todo)" mat-icon-button>
-              <mat-icon>check</mat-icon>
-            </button>
-            <button (click)="setTask(todo.id)" mat-icon-button>
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button color="warn" (click)="deleteTask(todo.id)">
-              <mat-icon>clear</mat-icon>
-            </button>
-          </li>
+          <ng-container *ngIf="!todo.done && setTaskId !== todo.id else setTaskTemplate" >
+            <li [style.background-color]="todo.category.color">
+              {{todo.task}}
+              <button (click)="status(todo)" mat-icon-button>
+                <mat-icon>check</mat-icon>
+              </button>
+              <button (click)="setTask(todo.id)" mat-icon-button>
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="deleteTask(todo.id)">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </li>
+          </ng-container>
           <ng-template #setTaskTemplate>
-            <li *ngIf="setTaskId == todo.id">
+            <li *ngIf="setTaskId == todo.id" >
               <input type="text" name="task" [(ngModel)]="todo.task"/>
               <button (click)="valideEdit(todo)" mat-icon-button><mat-icon>check</mat-icon></button>
             </li>
@@ -32,7 +34,7 @@
       <b>Done</b>
       <ul class="mt-4">
         <ng-container *ngFor="let todo of tasks">
-          <li *ngIf="todo.done">
+          <li *ngIf="todo.done" [style.background-color]="todo.category.color">
             {{todo.task}}
             <button mat-icon-button (click)="status(todo)"><mat-icon>undo</mat-icon></button>
             <button mat-icon-button color="warn" (click)="deleteTask(todo.id)"><mat-icon>clear</mat-icon></button>
@@ -43,10 +45,35 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="form-group col-md-5">
+      <div>
+        <label>Tâche</label>
+        <input type="text" class="form-control" name="task" formControlName="task" />
+      </div>
+      <div class="form-group mb-1">
+        <select formControlName="category" class="form-control">
+            <option *ngFor="let cat of categories"
+              [ngValue]="cat.id"
+              [style.background-color]="cat.color">
+              {{cat.category}}
+            </option>
+        </select>
+      </div>
+      <button type="submit" [disabled]="taskForm.invalid">Submit</button>
+    </form>
 
-<form #formAddTask="ngForm">
-  <label>Tâche</label>
-  <input type="text" name="task" [(ngModel)]="newTask" required minlength="1"/>
-  <button (click)="onSubmit(formAddTask)" [disabled]="formAddTask.invalid">Enregistrer</button>
-  </form>
+    <app-categories class="form-group col-md-5"></app-categories>
+  </div>
+  <div class="row mt-2">
+    <form [formGroup]="filterForm" (ngSubmit)="filter()">
+      <label>Filtre par catégorie</label>
+      <select class="form-control" formControlName="filter">
+        <option *ngFor="let cat of categories" [ngValue]="cat.id" [style.background-color]="cat.color">{{cat.category}}</option>
+      </select>
+      <button type="submit">Filtre</button>
+    </form>
+  </div>
+</div>
 

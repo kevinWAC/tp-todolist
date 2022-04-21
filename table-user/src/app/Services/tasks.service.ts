@@ -27,11 +27,15 @@ export class TasksService {
   }
 
   deleteTask(taskId: number) {
-    return this.http.delete(this._urlUserAPI + `/todos/${taskId}`)
+    return this.http.delete(this._urlUserAPI + `/todos/${taskId}`);
   }
 
   createTask(task: Partial<Tasks>){
-    return this.http.post<Tasks>(this._urlUserAPI + `/todos`,task)
+    return this.http.post<Tasks>(this._urlUserAPI + `/todos`,task);
+  }
+
+  filterTask(filter: number, idUser: number): Observable<Tasks> {
+      return this.http.get<Tasks>(this._urlUserAPI + `/todos?idUser=${idUser}&category.id=${filter}`);
   }
 
 }
